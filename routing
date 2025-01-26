@@ -248,6 +248,57 @@ network 8.8.8.0 mask 255.255.255.255
 end
 
 
+@R1 (for BGP and OSPF)
+conf t
+ router ospf 1
+ default-information originate always 
+end
+
+
+@R4 (for OSPF & EIGRP)
+!pasok EIGRP kay OSPF
+conf t
+ router ospf 1
+ redistribute eigrp 100 subnets
+exit
+
+!pasok OSPF kay EIGRP (na matapobre)
+router eigrp 100
+redistribute ospf 1 metric 1544 2000 255 1 1500
+end
+
+
+@P1 (!ping muna si kadikit)
+!Default Static
+conf t
+ ip route 0.0.0.0 0.0.0.0 10.2.1.1
+end
+
+
+@P2
+(!ping muna si kadikit)
+!Default Static
+conf t
+ ip route 0.0.0.0 0.0.0.0 10.2.2.2
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
