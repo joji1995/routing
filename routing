@@ -148,9 +148,17 @@ router ospf 1
 end
 
 
+@R1
+conf t 
+router ospf 1
+	router-id 1.1.1.1
+	network 10.1.1.0 0.0.0.3 area 12
+	network 1.1.1.1 0.0.0.0 area 0
+end
 
 
-
+Configure BGP
+@
 
 
 
