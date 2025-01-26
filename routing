@@ -282,7 +282,7 @@ conf t
  ip route 0.0.0.0 0.0.0.0 10.2.2.2
 end
 
-
+traceroute 8.8.8.8 (! to check hops) 
 
 
 
