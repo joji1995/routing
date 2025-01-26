@@ -86,13 +86,35 @@ conf t
 end
 
 
+@D1
+conf t
+ router eigrp 100
+	no auto-summary
+	network 10.1.4.4
+	network 10.2.1.0
+	network 10.2.2.0
+	network 192.168.1.128
+end
 
 
+@D2
+conf t
+ router eigrp 100
+	no auto-summary
+	network 10.1.4.8
+	network 10.2.1.0
+	network 10.2.2.0
+	network 192.168.1.128
+end
 
 
-
-
-
+@R4
+conf t
+ router eigrp 100
+	no auto-summary
+	network 10.1.4.4
+	network 10.1.4.8
+end
 
 
 
