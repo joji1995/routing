@@ -212,11 +212,40 @@ ip route 192.168.0.0 255.255.0.0 207.7.7.1
 end
 
 
+@I3
+conf t
+ router bgp 3
+bgp log-neighbor-changes
+neighbor 35.3.5.5 remote-as 45
+neighbor 209.9.9.1 remote-as 1
+neighbor 32.3.2.2 remote-as 2
+network 35.3.5.0 mask 255.255.255.0
+network 209.9.9.0 mask 255.255.255.0
+network 32.3.2.0 mask 255.255.255.0
+network 33.33.33.33 mask 255.255.255.255
+!PretendInternet
+network 0.0.0.0
+ip route 0.0.0.0 0.0.0.0 null 0
+ip route 10.0.0.0 255.0.0.0 208.8.8.1
+ip route 192.168.0.0 255.255.0.0 207.7.7.1
+end
 
 
-
-
-
+@I4
+conf t
+int lo8
+ ip add 8.8.8.8 255.255.255.255
+router bgp 45
+bgp log-neighbor-changes
+neighbor 25.2.5.2 remote-as 2
+neighbor 35.3.5.3 remote-as 3
+neighbor 45.4.5.4 remote-as 45
+network 25.2.5.0 mask 255.255.255.0
+network 35.3.5.0 mask 255.255.255.0
+network 45.4.5.0 mask 255.255.255.0
+network 55.55.55.55 mask 255.255.255.255
+network 8.8.8.0 mask 255.255.255.255
+end
 
 
 
